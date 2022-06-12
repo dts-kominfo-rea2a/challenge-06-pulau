@@ -20,23 +20,23 @@ let modifyFile3 = (val) => {
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fnCallback) => {
-  let data = [];
-  fs.readFile(file1, (err, data1) => {
+  let arrData = [];
+  fs.readFile(file1, (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      data.push(JSON.parse(data1).message.split(" ")[1]);
-      fs.readFile(file2, (err, data2) => {
+      arrData.push(JSON.parse(data).message.split(" ")[1]);
+      fs.readFile(file2, (err, data) => {
         if (err) {
           console.log(err);
         } else {
-          data.push(JSON.parse(data2)[0].message.split(" ")[1]);
-          fs.readFile(file3, (err, data3) => {
+          arrData.push(JSON.parse(data)[0].message.split(" ")[1]);
+          fs.readFile(file3, (err, data) => {
             if (err) {
               console.log(err);
             } else {
-              data.push(JSON.parse(data3)[0].data.message.split(" ")[1]);
-              fnCallback(data);
+              arrData.push(JSON.parse(data)[0].data.message.split(" ")[1]);
+              fnCallback(arrData);
             }
           });
         }
